@@ -1,0 +1,10 @@
+---
+description: Business logic and data structures for Imitation Jewellery
+globs: "src/lib/db/**/*.ts", "src/types/**/*.ts", "src/app/api/**/*.ts"
+alwaysApply: false
+---
+- **Product Variants:** Products must support multi-dimensional variants. Always include types for `platingColor` (e.g., oxidized, gold-plated, rhodium) and `stoneType` (e.g., AD, Kundan, Polki).
+- **Required Metadata:** Every product model MUST include `material`, `weight` (for shipping calculations), `careInstructions`, and `dimensions`.
+- **Pricing:** Store all prices in the lowest currency denominator (e.g., cents or paise) as integers to avoid floating-point math errors.
+- **Inventory:** Inventory must be tracked at the Variant/SKU level, not the parent Product level. 
+- **API Responses:** Return structured error objects with a `code` and `message` field when validation or inventory checks fail.

@@ -1,0 +1,10 @@
+---
+description: Global tech stack and core project conventions
+alwaysApply: true
+---
+- Use Next.js (App Router), React, TypeScript, and Tailwind CSS.
+- Use Shadcn UI for base components and Framer Motion for micro-interactions.
+- State management: Use Zustand for global client state (Cart, Wishlist) and React Query/SWR for server state caching.
+- Strictly type everything. Avoid using `any`. Use Zod for schema validation on all forms and API inputs.
+- Always implement loading skeletons (not spinners) for a premium feel while data fetches.
+- Never modify generated files in `dist/` or `.next/`.

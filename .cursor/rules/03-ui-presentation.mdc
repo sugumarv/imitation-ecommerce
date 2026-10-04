@@ -1,0 +1,10 @@
+---
+description: Component styling and e-commerce UI guidelines
+globs: "src/components/**/*.tsx", "src/app/**/*.tsx"
+alwaysApply: false
+---
+- **Images:** Always use Next.js `<Image>` component for automatic WebP conversion and responsive sizing. Required props: `alt`, `width`, `height` or `fill` with `sizes`.
+- **Product Galleries:** Build product galleries with a main zoomed image and a thumbnail strip below it.
+- **Aesthetic:** Use a minimalist, luxury-inspired color palette (e.g., whites, creams, muted golds, and deep blacks) so the jewellery stands out.
+- **Mobile First:** Ensure the Add to Cart and Checkout buttons are sticky at the bottom of the screen on mobile devices.
+- **Components:** Extract reusable UI elements (e.g., `PriceDisplay`, `VariantSelector`, `StockBadge`) into `src/components/shop/`.

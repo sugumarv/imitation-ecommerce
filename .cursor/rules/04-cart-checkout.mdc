@@ -1,0 +1,9 @@
+---
+description: Rules for cart state and payment processing
+globs: "src/store/**/*.ts", "src/components/checkout/**/*.tsx", "src/app/api/checkout/**/*.ts"
+alwaysApply: false
+---
+- **Cart Persistence:** The Zustand cart store must be wrapped in a persist middleware to save the cart to `localStorage`.
+- **Security:** Never trust client-side price calculations. Always re-calculate the final cart total on the server before initializing the payment intent.
+- **Webhooks:** Payment webhook handlers must verify the signature and ensure idempotency (preventing the same order from being processed twice).
+- **User Feedback:** Disable checkout buttons and show a clear loading state while payment intents are being created.
