@@ -1,0 +1,10 @@
+---
+description: Security and architecture rules for Razorpay integration
+globs: "src/app/api/razorpay/**/*.ts", "src/components/checkout/**/*.tsx", "src/types/razorpay.d.ts"
+alwaysApply: false
+---
+- **Never Trust Client Prices:** The `/api/razorpay/create-order` route MUST recalculate the final cart total by fetching product prices directly from the database using the SKU/Variant IDs provided in the request. Never accept a `totalAmount` from the frontend.
+- **Order Creation:** Always create a Razorpay Order on the server side first using the `razorpay` Node SDK. Return the `id` (order_id), `amount`, and `currency` to the frontend.
+- **Webhooks:** The `/api/razorpay/webhook` route MUST verify the `x-razorpay-signature` using the `crypto` module (HMAC SHA256) before updating the database.
+- **Idempotency:** In the webhook handler, check if the order status is already updated to prevent duplicate processing if Razorpay fires the webhook twice.
+- **Client SDK:** Load the Razorpay script asynchronously (`https://checkout.razorpay.com/v1/checkout.js`) only when the user reaches the checkout page. Extend the global `Window` interface to include the `Razorpay` constructor to avoid TypeScript errors.
